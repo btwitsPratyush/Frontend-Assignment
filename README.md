@@ -145,12 +145,12 @@ The app uses React Context to manage:
 
 ## Code Quality
 
-- ✅ TypeScript for type safety
-- ✅ Functional components with hooks
-- ✅ Reusable, logical component structure
-- ✅ Clean, readable code with comments
-- ✅ Proper prop types and interfaces
-- ✅ Consistent naming conventions
+-  TypeScript for type safety
+-  Functional components with hooks
+-  Reusable, logical component structure
+-  Clean, readable code with comments
+-  Proper prop types and interfaces
+-  Consistent naming conventions
 
 ## Browser Support
 
@@ -178,4 +178,4 @@ This project is created as a frontend assignment and is for demonstration purpos
 
 ## Support
 
-For questions or issues, please refer to the project documentation or contact the development team.
+For questions or issues, please refer to the project documentation or contact developer @btwitsPratyush
