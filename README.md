@@ -178,4 +178,4 @@ This project is created as a frontend assignment and is for demonstration purpos
 
 ## Support
 
-For questions or issues, please refer to the project documentation or contact developer @btwitsPratyush
+For questions or issues, please refer to the project documentation or contact developer.
