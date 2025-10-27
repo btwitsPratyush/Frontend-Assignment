@@ -59,6 +59,7 @@ export const Sidebar = () => {
         {navItems.map((item) => (
           <button
             key={item.label}
+            onClick={() => console.log(`${item.label} clicked!`)}
             className={cn(
               'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-sm',
               item.active
