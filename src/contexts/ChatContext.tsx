@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export interface Message {
   id: string;
@@ -25,6 +25,7 @@ interface ChatContextType {
   toggleSidebar: () => void;
   setSelectedModel: (model: string) => void;
   newChat: () => void;
+  isTyping: boolean;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -34,7 +35,20 @@ const PREDEFINED_RESPONSES = [
   "I'd be happy to help you with that. Let me break this down for you...",
   "Great question! Here's my perspective on this topic...",
   "I understand what you're looking for. Let me provide you with a detailed response...",
-  "Thanks for asking! Here's a comprehensive answer to your query..."
+  "Thanks for asking! Here's a comprehensive answer to your query...",
+  "Ah, another query for my boundless wisdom. Lay it on me.", // Sarcastic
+  "Just when I thought I could take a coffee break... What's up?", // Funny
+  "My circuits are buzzing with anticipation for your next brilliant question.", // Sarcastic
+  "Processing... just kidding, I'm always ready. What do you need?", // Funny
+];
+
+const GREETING_RESPONSES = [
+  "Hello there! I'm Inteliq Chat Assistant developed by Pratyush. How can I assist you today?",
+  "Hi! Ready to dive into some knowledge? What's on your mind?",
+  "Greetings, human! How may I illuminate your digital day?",
+  "Hey! I'm here to help. Or, you know, just chat. Whatever.", // Funny
+  "Well, hello. Didn't see you there. Just kidding, I see everything. What's up?", // Sarcastic
+  "Another day, another delightful interaction. How can I be of service?", // Sarcastic
 ];
 
 const SAMPLE_CHAT_HISTORY: ChatHistory[] = [
@@ -88,12 +102,13 @@ const SAMPLE_CHAT_HISTORY: ChatHistory[] = [
   },
 ];
 
-export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ChatProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatHistory] = useState<ChatHistory[]>(SAMPLE_CHAT_HISTORY);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeChat, setActiveChat] = useState(false);
-  const [selectedModel, setSelectedModel] = useState('ChatGPT 4');
+  const [selectedModel, setSelectedModel] = useState("ChatGPT 4"); // Initialize with a default model
+  const [isTyping, setIsTyping] = useState(false);
 
   const sendMessage = (content: string, attachments?: { id: string; name: string; size: number }[]) => {
     const userMessage: Message = {
@@ -106,10 +121,14 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     setMessages((prev) => [...prev, userMessage]);
     setActiveChat(true);
+    setIsTyping(true); // Set isTyping to true when message is sent
 
     // Simulate AI response after a short delay
     setTimeout(() => {
-      const randomResponse = PREDEFINED_RESPONSES[Math.floor(Math.random() * PREDEFINED_RESPONSES.length)];
+      // Simulate typing indicator here if desired
+      const isGreeting = content.toLowerCase().includes('hi') || content.toLowerCase().includes('hello');
+      const responseArray = isGreeting ? GREETING_RESPONSES : PREDEFINED_RESPONSES;
+      const randomResponse = responseArray[Math.floor(Math.random() * responseArray.length)];
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -117,7 +136,8 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, assistantMessage]);
-    }, 1000);
+      setIsTyping(false); // Set isTyping to false after AI responds
+    }, 2500); // 2.5 second delay for lazy loading
   };
 
   const toggleSidebar = () => {
@@ -129,20 +149,21 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setActiveChat(false);
   };
 
+  const contextValue: ChatContextType = {
+    messages,
+    chatHistory,
+    sidebarCollapsed,
+    activeChat,
+    selectedModel,
+    sendMessage,
+    toggleSidebar,
+    setSelectedModel,
+    newChat,
+    isTyping,
+  };
+
   return (
-    <ChatContext.Provider
-      value={{
-        messages,
-        chatHistory,
-        sidebarCollapsed,
-        activeChat,
-        selectedModel,
-        sendMessage,
-        toggleSidebar,
-        setSelectedModel,
-        newChat,
-      }}
-    >
+    <ChatContext.Provider value={contextValue}>
       {children}
     </ChatContext.Provider>
   );
@@ -150,7 +171,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
 export const useChat = () => {
   const context = useContext(ChatContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useChat must be used within a ChatProvider');
   }
   return context;

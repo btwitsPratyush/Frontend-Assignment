@@ -98,15 +98,9 @@ export const Sidebar = () => {
       </div>
 
       {/* Try Pro */}
-      <div className="p-4 border-t">
-        <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-3 mb-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-semibold text-sm">Try Pro!</span>
-            <Sparkles className="w-4 h-4 text-primary" />
-          </div>
-          <p className="text-xs text-muted-foreground">
-            Upgrade for smarter AI and more...
-          </p>
+      <div className="p-4">
+        <div className="bg-gradient-to-br from-[#F8F9FC] to-[#F8F9FC] rounded-lg p-3 mb-3 flex justify-between items-center">
+          <img src="/src/assets/Button-Upgrade.png" alt="Upgrade to Pro" className="w-full" />
         </div>
 
         {/* User Profile */}
@@ -117,7 +111,7 @@ export const Sidebar = () => {
             className="w-8 h-8 rounded-full object-cover"
           />
           <span className="flex-1 text-left text-sm font-medium">Lawrence Cruz</span>
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+          <img src="/src/assets/IconBubble.png" alt="Toggle" className="w-6 h-6" />
         </button>
       </div>
     </div>

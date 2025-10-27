@@ -1,5 +1,7 @@
 import { Message } from '@/contexts/ChatContext';
-import { Sparkles, Paperclip } from 'lucide-react';
+import { Paperclip } from 'lucide-react';
+import userAvatar from '@/assets/user-avatar.jpg'; // Import the user avatar image
+import inteliqLogo from '/public/favicon.png'; // Import the favicon as Inteliq logo
 
 interface ChatMessageProps {
   message: Message;
@@ -13,13 +15,9 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
           {/* Avatar */}
           <div className="flex-shrink-0">
             {message.role === 'assistant' ? (
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-primary-foreground" />
-              </div>
+              <img src={inteliqLogo} alt="Inteliq Logo" className="w-8 h-8 rounded-full" />
             ) : (
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-sm font-medium">
-                LC
-              </div>
+              <img src={userAvatar} alt="User Avatar" className="w-8 h-8 rounded-full" />
             )}
           </div>
 
