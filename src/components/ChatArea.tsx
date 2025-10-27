@@ -88,7 +88,7 @@ export const ChatArea = () => {
           >
             <Menu className="w-5 h-5" />
           </Button>
-          <img src={chatGPTLogo} alt="ChatGPT Logo" className="max-w-[150px] max-h-[140px] object-contain" />
+          <img src={chatGPTLogo} alt="ChatGPT Logo" className="max-w-[160px] max-h-[160px] object-contain" />
         </div>
 
         <div className="flex items-center gap-2">
