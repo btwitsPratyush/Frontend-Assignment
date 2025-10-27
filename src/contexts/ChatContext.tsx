@@ -5,7 +5,7 @@ export interface Message {
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
-  attachments?: { id: string; name: string; size: number }[];
+  attachments?: { id: string; name: string; size: number; url: string; type: string }[];
 }
 
 export interface ChatHistory {
@@ -110,7 +110,7 @@ export const ChatProvider: React.FC = ({ children }) => {
   const [selectedModel, setSelectedModel] = useState("ChatGPT 4"); // Initialize with a default model
   const [isTyping, setIsTyping] = useState(false);
 
-  const sendMessage = (content: string, attachments?: { id: string; name: string; size: number }[]) => {
+  const sendMessage = (content: string, attachments?: { id: string; name: string; size: number; url: string; type: string }[]) => {
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',

@@ -28,8 +28,10 @@ export const MessageInput = () => {
     // Simulate file attachment
     const mockFile = {
       id: Date.now().toString(),
-      name: 'document.docx',
-      size: 45678,
+      name: 'image.png',
+      size: 123456,
+      url: 'https://via.placeholder.com/150', // Placeholder image URL
+      type: 'image/png',
     };
     setAttachments([...attachments, mockFile]);
   };
