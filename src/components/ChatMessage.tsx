@@ -35,11 +35,17 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
                     key={file.id}
                     className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg text-sm"
                   >
-                    <Paperclip className="w-4 h-4 text-muted-foreground" />
-                    <span className="flex-1 truncate">{file.name}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {(file.size / 1024).toFixed(0)}KB
-                    </span>
+                    {file.type.startsWith('image/') ? (
+                      <img src={file.url} alt={file.name} className="max-w-full h-auto rounded-lg" />
+                    ) : (
+                      <>
+                        <Paperclip className="w-4 h-4 text-muted-foreground" />
+                        <span className="flex-1 truncate">{file.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {(file.size / 1024).toFixed(0)}KB
+                        </span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
