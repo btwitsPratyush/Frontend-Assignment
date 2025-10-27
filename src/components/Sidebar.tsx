@@ -1,4 +1,4 @@
-import { Home, FolderOpen, Clock, Compass, Search, Sparkles, ChevronDown } from 'lucide-react';
+import { Home, FolderOpen, Clock, Compass, Search, Rocket, ChevronDown } from 'lucide-react';
 import { useChat } from '@/contexts/ChatContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -99,8 +99,14 @@ export const Sidebar = () => {
 
       {/* Try Pro */}
       <div className="p-4">
-        <div className="bg-gradient-to-br from-[#F8F9FC] to-[#F8F9FC] rounded-lg p-3 mb-3 flex justify-between items-center">
-          <img src="/src/assets/Button-Upgrade.png" alt="Upgrade to Pro" className="w-full" />
+        <div className="bg-gradient-to-br from-[#F8F9FC] to-[#F8F9FC] rounded-lg p-3 mb-3 flex items-center justify-between">
+          <div>
+            <h3 className="text-md font-bold font-bricolage">Try Pro!</h3>
+            <p className="text-sm text-muted-foreground">Upgrade for smarter AI and more...</p>
+          </div>
+          <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+            <Rocket className="w-5 h-5 text-primary" />
+          </div>
         </div>
 
         {/* User Profile */}

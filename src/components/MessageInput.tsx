@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 export const MessageInput = () => {
   const { sendMessage } = useChat();
   const [input, setInput] = useState('');
-  const [attachments, setAttachments] = useState<{ id: string; name: string; size: number }[]>([]);
+  const [attachments, setAttachments] = useState<{ id: string; name: string; size: number; url: string; type: string }[]>([]);
 
   const handleSend = () => {
     if (input.trim() || attachments.length > 0) {
