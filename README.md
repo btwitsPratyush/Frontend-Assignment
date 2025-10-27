@@ -4,14 +4,14 @@ A beautiful, responsive chat interface built with React, TypeScript, and Tailwin
 
 ## Features
 
-- Pixel-perfect UI** - Matches the Figma design specifications
-- Real-time Chat** - Instant message sending with simulated AI responses
-- File Attachments** - Support for attaching files to messages
-- Responsive Design** - Works seamlessly from desktop to tablet
-- Quick Suggestions** - Pre-defined prompts for faster interactions
-- Chat History** - Persistent chat history in sidebar
-- Collapsible Sidebar** - Maximize chat space when needed
-- State Management** - Efficient React Context for global state
+- Pixel-perfect UI - Matches the Figma design specifications
+- Real-time Chat - Instant message sending with simulated AI responses
+- File Attachments - Support for attaching files to messages
+- Responsive Design - Works seamlessly from desktop to tablet
+- Quick Suggestions - Pre-defined prompts for faster interactions
+- Chat History - Persistent chat history in sidebar
+- Collapsible Sidebar - Maximize chat space when needed
+- State Management - Efficient React Context for global state
 
 ## Tech Stack
 
