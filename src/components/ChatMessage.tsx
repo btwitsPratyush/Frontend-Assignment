@@ -1,7 +1,7 @@
 import { Message } from '@/contexts/ChatContext';
 import { Paperclip } from 'lucide-react';
 import userAvatar from '@/assets/user-avatar.jpg'; // Import the user avatar image
-import inteliqLogo from '/public/favicon.png'; // Import the favicon as Inteliq logo
+import chatGPTLogo from '@/assets/AI-model.png'; // Import the new ChatGPT logo
 
 interface ChatMessageProps {
   message: Message;
@@ -15,7 +15,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
           {/* Avatar */}
           <div className="flex-shrink-0">
             {message.role === 'assistant' ? (
-              <img src={inteliqLogo} alt="Inteliq Logo" className="w-8 h-8 rounded-full" />
+              <img src={chatGPTLogo} alt="ChatGPT Logo" className="w-8 h-8 rounded-full" />
             ) : (
               <img src={userAvatar} alt="User Avatar" className="w-8 h-8 rounded-full" />
             )}

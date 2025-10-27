@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Home, FolderOpen, Clock, Compass, Search, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
 import { useChat } from '@/contexts/ChatContext';
 import { cn } from '@/lib/utils';
@@ -8,30 +9,41 @@ import logoImage from '@/assets/logo.png';
 import userAvatar from '@/assets/user-avatar.jpg';
 
 export const Sidebar = () => {
-  const { chatHistory, sidebarCollapsed } = useChat();
+  const [activeItem, setActiveItem] = useState('home');
+  const { sidebarCollapsed, toggleSidebar, chatHistory } = useChat();
 
   const navItems = [
-    { icon: Home, label: 'Home', shortcut: '⌘ H', active: true },
-    { icon: FolderOpen, label: 'Library', shortcut: '⌘ T', active: false },
-    { icon: Clock, label: 'History', shortcut: '⌘ G', active: false },
-    { icon: Compass, label: 'Explore', shortcut: '⌘ L', active: false },
+    { id: 'home', icon: Home, label: 'Home', shortcut: '⌘ H' },
+    { id: 'library', icon: FolderOpen, label: 'Library', shortcut: '⌘ T' },
+    { id: 'history', icon: Clock, label: 'History', shortcut: '⌘ G' },
+    { id: 'explore', icon: Compass, label: 'Explore', shortcut: '⌘ L' },
   ];
 
   if (sidebarCollapsed) {
     return (
-      <div className="w-16 border-r bg-[hsl(var(--sidebar-bg))] flex flex-col items-center py-4 gap-4">
-        <img src={logoImage} alt="Inteliq" className="w-9 h-9 rounded-lg" />
-        {navItems.map((item) => (
-          <button
-            key={item.label}
-            className={cn(
-              'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
-              item.active ? 'text-primary' : 'text-[hsl(var(--icon-gray))] hover:bg-[hsl(var(--sidebar-hover))]'
-            )}
-          >
-            <item.icon className="w-5 h-5" />
-          </button>
-        ))}
+      <div className="w-20 border-r bg-[hsl(var(--sidebar-bg))] flex flex-col h-full items-center py-4">
+        {/* Logo */}
+        <div className="mb-8">
+          <img src={logoImage} alt="Inteliq" className="w-9 h-9 rounded-lg" />
+        </div>
+
+        {/* Navigation */}
+        <div className="space-y-4">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveItem(item.id)}
+              className={cn(
+                'flex items-center justify-center w-12 h-12 rounded-lg transition-colors',
+                activeItem === item.id
+                  ? 'bg-background text-primary'
+                  : 'text-[hsl(var(--icon-gray))] hover:bg-[hsl(var(--sidebar-hover))]'
+              )}
+            >
+              <item.icon className="w-5 h-5" />
+            </button>
+          ))}
+        </div>
       </div>
     );
   }
@@ -58,10 +70,11 @@ export const Sidebar = () => {
       <div className="px-2 pb-4 space-y-1">
         {navItems.map((item) => (
           <button
-            key={item.label}
+            key={item.id}
+            onClick={() => setActiveItem(item.id)}
             className={cn(
               'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-sm',
-              item.active
+              activeItem === item.id
                 ? 'bg-background text-primary font-medium'
                 : 'text-[hsl(var(--icon-gray))] hover:bg-[hsl(var(--sidebar-hover))]'
             )}

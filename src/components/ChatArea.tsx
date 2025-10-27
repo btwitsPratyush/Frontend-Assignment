@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from 'react';
+import chatGPTLogo from '@/assets/AI-model.png';
 
 // Typing Indicator Component
 const TypingIndicator = () => {
@@ -87,36 +88,7 @@ export const ChatArea = () => {
           >
             <Menu className="w-5 h-5" />
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-muted transition-colors">
-                <span className="text-sm font-medium">{selectedModel}</span>
-                <ChevronDown className="w-4 h-4 text-muted-foreground" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48">
-              <DropdownMenuItem onClick={() => setSelectedModel("ChatGPT 4")}>
-                <span className={cn("font-medium", selectedModel === "ChatGPT 4" && "text-primary")}>
-                  ChatGPT 4
-                </span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedModel("ChatGPT 3.5")}>
-                <span className={cn("font-medium", selectedModel === "ChatGPT 3.5" && "text-primary")}>
-                  ChatGPT 3.5
-                </span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedModel("GPT-3.5 Turbo")}>
-                <span className={cn("font-medium", selectedModel === "GPT-3.5 Turbo" && "text-primary")}>
-                  GPT-3.5 Turbo
-                </span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedModel("ChatGPT GPT 4")}>
-                <span className={cn("font-medium", selectedModel === "ChatGPT GPT 4" && "text-primary")}>
-                  ChatGPT GPT 4
-                </span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <img src={chatGPTLogo} alt="ChatGPT Logo" className="max-w-[160px] max-h-[160px] object-contain" />
         </div>
 
         <div className="flex items-center gap-2">
