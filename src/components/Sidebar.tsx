@@ -1,4 +1,4 @@
-import { Home, FolderOpen, Clock, Compass, Search, Rocket, ChevronDown } from 'lucide-react';
+import { Home, FolderOpen, Clock, Compass, Search, Rocket, ChevronDown, ChevronUp } from 'lucide-react';
 import { useChat } from '@/contexts/ChatContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -98,10 +98,10 @@ export const Sidebar = () => {
       </div>
 
       {/* Try Pro */}
-      <div className="p-4">
-        <div className="bg-gradient-to-br from-[#F8F9FC] to-[#F8F9FC] rounded-lg p-3 mb-3 flex items-center justify-between">
+      <div className="px-4 py-2">
+        <div className="bg-gradient-to-br from-[#F8F9FC] to-[#F0F4FF] rounded-lg p-3 mb-3 flex items-center justify-between border border-[#EBEBEB]">
           <div>
-            <h3 className="text-md font-bold font-bricolage">Try Pro!</h3>
+            <h3 className="text-base font-bold leading-tight">Try Pro!</h3>
             <p className="text-sm text-muted-foreground">Upgrade for smarter AI and more...</p>
           </div>
           <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
@@ -117,7 +117,10 @@ export const Sidebar = () => {
             className="w-8 h-8 rounded-full object-cover"
           />
           <span className="flex-1 text-left text-sm font-medium">Lawrence Cruz</span>
-          <img src="/src/assets/IconBubble.png" alt="Toggle" className="w-6 h-6" />
+          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-col">
+            <ChevronUp className="w-4 h-4" />
+            <ChevronDown className="w-4 h-4 -mt-1" />
+          </div>
         </button>
       </div>
     </div>
