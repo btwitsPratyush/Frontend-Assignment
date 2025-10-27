@@ -36,19 +36,19 @@ const PREDEFINED_RESPONSES = [
   "Great question! Here's my perspective on this topic...",
   "I understand what you're looking for. Let me provide you with a detailed response...",
   "Thanks for asking! Here's a comprehensive answer to your query...",
-  "Ah, another query for my boundless wisdom. Lay it on me.", // Sarcastic
-  "Just when I thought I could take a coffee break... What's up?", // Funny
-  "My circuits are buzzing with anticipation for your next brilliant question.", // Sarcastic
-  "Processing... just kidding, I'm always ready. What do you need?", // Funny
+  "Ah, another query for my boundless wisdom. Lay it on me.", 
+  "Just when I thought I could take a coffee break... What's up?", 
+  "My circuits are buzzing with anticipation for your next brilliant question.", 
+  "Processing... just kidding, I'm always ready. What do you need?", 
 ];
 
 const GREETING_RESPONSES = [
   "Hello there! I'm Inteliq Chat Assistant developed by Pratyush. How can I assist you today?",
   "Hi! Ready to dive into some knowledge? What's on your mind?",
   "Greetings, human! How may I illuminate your digital day?",
-  "Hey! I'm here to help. Or, you know, just chat. Whatever.", // Funny
-  "Well, hello. Didn't see you there. Just kidding, I see everything. What's up?", // Sarcastic
-  "Another day, another delightful interaction. How can I be of service?", // Sarcastic
+  "Hey! I'm here to help. Or, you know, just chat. Whatever.", 
+  "Well, hello. Didn't see you there. Just kidding, I see everything. What's up?", 
+  "Another day, another delightful interaction. How can I be of service?", 
 ];
 
 const SAMPLE_CHAT_HISTORY: ChatHistory[] = [
